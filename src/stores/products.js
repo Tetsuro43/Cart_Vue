@@ -24,6 +24,11 @@ export const useStoreProducts = defineStore('products', {
             const product = this.products.find((product) => product.id === productId);
             /* 在庫を一つずつ減らす */
             product.inventory--;
-        }
+        },
+        /* 在庫数を一つずつ増やす */
+        incrementInventory(productId) {
+            const product = this.products.find((product) => product.id === productId);
+            product.inventory++;
+        },
     },
 })

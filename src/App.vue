@@ -25,7 +25,7 @@ reactiveな性質を維持するには、storeToRefs()を利用する
   <HelloPinia /> -->
 
   <div id="app">
-    <h1>Pinia入門（カート）</h1>
+    <h1>Piniaカート</h1>
     <hr />
     <h2>商品一覧</h2>
     <ProductList />

@@ -26,16 +26,37 @@ export const useStoreCart = defineStore('cart', {
             const { decrementInventory } = useStoreProducts();
             /* カートに入れる対象の商品を検索 this=cartオブジェクト */
             const item = this.items.find((item) => item.id === product.id);
-
             if (item) {
-                /* 在庫があれば、カートに商品数を追加 */
+                /* 2回目のクリック以降、quantityに+1 */
                 item.quantity++;
             } else {
-                /* ?? */
+                /* 初回クリック時にquantityを初期値1 */
                 this.items.push({...product, quantity: 1});
             }
             /* 在庫を減らす処理の実行 */
             decrementInventory(product.id);
+        },
+        subtractCart(product) {
+            const { incrementInventory } = useStoreProducts();
+            const item = this.items.find((item) => item.id === product.id);
+
+            /* カートの商品数を減らす */
+            if (item.quantity > 0) {
+                item.quantity--;
+
+                if (item.quantity === 0) {
+                    console.log(item);
+                    console.log(this.items);
+                    /*
+                    itemsから削除対象の要素itemのindexを出し、
+                    indexを用いてitemsから削除
+                    */
+                    const index = this.items.indexOf(item);
+                    this.items.splice(index, 1);
+                }
+            }
+            /* 在庫を減らす処理の実行 */
+            incrementInventory(product.id);
         },
     },
 });

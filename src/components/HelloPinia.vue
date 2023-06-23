@@ -9,10 +9,10 @@ const counter = useStoreCounter();
 //         // 引数にオブジェクトとして渡したら以下も使える
 //         // count: 100,
 //         // user: {
-//         //     name: 'Tetsuro',
+//         //     name: 'Hey Ho!',
 //         // },
 //         state.count = 10;
-//         state.user.name = 'Akari';
+//         state.user.name = 'Hey Woo!';
 //     });
 // };
 
@@ -22,7 +22,7 @@ const replace = () => {
         count: 100,
         count2: 200,
         user: {
-            name: 'Akari Koga',
+            name: 'Hey Woo!',
         },
     };
 };

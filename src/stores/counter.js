@@ -7,7 +7,7 @@ export const useStoreCounter = defineStore('counter', {
         count: 1,
         count2: 2,
         user: {
-            name: 'John Doe',
+            name: 'Hey Ho!',
         }
     }),
     getters: {

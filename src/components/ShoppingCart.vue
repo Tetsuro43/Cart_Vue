@@ -3,6 +3,8 @@ import { storeToRefs } from 'pinia';
 import { useStoreCart } from '../stores/cart';
 
 const { items, total } = storeToRefs(useStoreCart());
+/* カートから商品を減らす機能 */
+const { subtractCart } = useStoreCart();
 </script>
 
 <template>
@@ -11,6 +13,7 @@ const { items, total } = storeToRefs(useStoreCart());
     <ul>
         <li v-for="item in items" :key="item.id">
             {{ item.title }} - {{ item.price.toLocaleString("ja-JP", { style: "currency", currency: "JPY" }) }} x {{ item.quantity }}
+            <button @click="subtractCart(item)">1つ減らす</button>
         </li>
     </ul>
     <h3>合計金額：{{ total.toLocaleString("ja-JP", { style: "currency", currency: "JPY" }) }}</h3>

@@ -12,8 +12,18 @@ export const useStoreProducts = defineStore('products', {
     }),
     actions: {
         getProducts() {
-            // cbを渡す
+            // cbを渡す this=productsオブジェクト
             shop.getProducts((products) => (this.products = products));
+        },
+        /*
+        引数から商品の id を受け取り
+        商品一覧からその id を持つ商品を見つけ在庫数を 1 減らす
+        */
+        decrementInventory(productId) {
+            /* productIdから、対象のproductを検索 */
+            const product = this.products.find((product) => product.id === productId);
+            /* 在庫を一つずつ減らす */
+            product.inventory--;
         }
     },
 })
